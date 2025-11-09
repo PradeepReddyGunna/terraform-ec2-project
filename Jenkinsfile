@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        AWS_CREDENTIALS = credentials('aws-creds')
+        AWS_CREDENTIALS = credentials('aws-access-key')
     }
 
     stages {
@@ -14,7 +14,7 @@ pipeline {
 
         stage('Terraform Init, Validate, Apply') {
             steps {
-                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-creds']]) {
+                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-access-key']]) {
                     sh '''
                         terraform init
                         terraform validate
@@ -26,4 +26,3 @@ pipeline {
         }
     }
 }
-
