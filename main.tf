@@ -12,6 +12,7 @@ provider "aws" {
   region = var.aws_region
 }
 
+# Create a simple EC2 instance in the default VPC
 resource "aws_instance" "terraform_demo" {
   ami                         = var.ami_id
   instance_type               = var.instance_type
