@@ -24,5 +24,22 @@ pipeline {
                 }
             }
         }
+
+        stage('Destroy Infrastructure') {
+            when {
+                expression {
+                    return params.DESTROY == true
+                }
+            }
+            steps {
+                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-access-key']]) {
+                    sh 'terraform destroy -auto-approve'
+                }
+            }
+        }
+    }
+
+    parameters {
+        booleanParam(name: 'DESTROY', defaultValue: false, description: 'Check this box to destroy infrastructure')
     }
 }
