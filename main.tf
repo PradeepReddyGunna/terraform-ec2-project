@@ -9,18 +9,15 @@ terraform {
 }
 
 provider "aws" {
-  region     = var.aws_region
-  access_key = var.aws_access_key
-  secret_key = var.aws_secret_key
+  region = var.aws_region
 }
 
 resource "aws_instance" "terraform_demo" {
-  ami                    = var.ami_id
-  instance_type          = var.instance_type
-  associate_public_ip_address = true
+  ami                         = var.ami_id
+  instance_type               = var.instance_type
+  associate_public_ip_address  = true
 
   tags = {
     Name = "terraform-ec2-instance"
   }
 }
-
