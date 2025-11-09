@@ -1,6 +1,3 @@
-# Jenkinsfile
-# Jenkins pipeline to deploy EC2 via Terraform using AWS credentials from Jenkins
-
 pipeline {
     agent any
 
