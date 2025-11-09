@@ -1,4 +1,3 @@
-
 terraform {
   required_providers {
     aws = {
@@ -37,3 +36,4 @@ resource "aws_instance" "terraform_demo" {
     Name = "terraform-ec2-instance"
   }
 }
+
